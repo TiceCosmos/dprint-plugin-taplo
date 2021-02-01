@@ -10,7 +10,7 @@ crate-type = ["lib", "cdylib"]
 
 
 [features]
-wasm = ["serde_json", "dprint-core/wasm"]
+wasm = ["serde_json", "dprint-core/wasm", "taplo/schema", "taplo/serde", "taplo/verify"]
 
 
 [dependencies]

@@ -1,15 +1,15 @@
 use dprint_core::configuration::{
-    get_unknown_property_diagnostics, get_value, ConfigKeyMap, ConfigurationDiagnostic,
-    GlobalConfiguration, NewLineKind, ResolveConfigurationResult,
+    get_unknown_property_diagnostics, get_value, ConfigKeyMap, GlobalConfiguration, NewLineKind,
+    ResolveConfigurationResult,
 };
 use dprint_core::generate_plugin_code;
-use std::path::PathBuf;
-use std::{collections::HashMap, todo};
+use std::path::Path;
+use taplo::{formatter, parser};
 
 use super::configuration::Configuration;
 
 fn resolve_config(
-    config: HashMap<String, ConfigKeyMap>,
+    config: ConfigKeyMap,
     global_config: &GlobalConfiguration,
 ) -> ResolveConfigurationResult<Configuration> {
     let mut config = config;
@@ -37,16 +37,14 @@ fn resolve_config(
         &mut config,
         "indent_string",
         if global_config.use_tabs.unwrap_or(false) {
-            "\t"
+            "\t".to_string()
         } else {
-            let mut indent_str = String::new();
-            for _ in 0..global_config.indent_width {
-                indent_str.push(' ');
-            }
+            vec![' '; global_config.indent_width.unwrap_or(4) as usize]
+                .into_iter()
+                .collect()
         },
         &mut diagnostics,
-    )
-    .to_string();
+    );
 
     let trailing_newline = get_value(&mut config, "trailing_newline", true, &mut diagnostics);
     let reorder_keys = get_value(&mut config, "reorder_keys", true, &mut diagnostics);
@@ -105,11 +103,15 @@ fn get_plugin_license_text() -> String {
 }
 
 fn format_text(
-    file_path: &Path,
+    _file_path: &Path,
     file_text: &str,
     config: &Configuration,
 ) -> Result<String, String> {
-    todo!();
+    let parser::Parse { green_node, errors } = parser::parse(file_text);
+    if let Some(e) = errors.first() {
+        return Err(e.message.clone());
+    }
+    Ok(formatter::format_green(green_node, config.clone()))
 }
 
 generate_plugin_code!();
