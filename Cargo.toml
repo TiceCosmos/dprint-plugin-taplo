@@ -1,6 +1,6 @@
 [package]
 name = "dprint-plugin-taplo"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Tice Cosmos <tice@139.com>"]
 edition = "2018"
 
@@ -10,12 +10,12 @@ crate-type = ["lib", "cdylib"]
 
 
 [features]
-wasm = ["serde_json", "dprint-core/wasm", "taplo/schema", "taplo/serde", "taplo/verify"]
+wasm = ["serde_json", "dprint-core/wasm"]
 
 
 [dependencies]
 dprint-core = { version = "0.35", features = ["formatting"] }
-taplo = "0.5"
+taplo = { version = "0.5", features = ["schema", "serde", "verify"] }
 
 serde = { version = "*", features = ["derive"] }
 
