@@ -75,7 +75,7 @@ jobs:
 
           1. Specify the plugin url in the `"plugins"` array.
           2. Ensure `.toml` file extensions are matched in an `"includes"` pattern.
-          3. Add a `"json"` configuration property if desired.
+          3. Add a `"taplo"` configuration property if desired.
              ```jsonc
              {
                // ...etc...
