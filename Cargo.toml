@@ -3,10 +3,20 @@ name = "dprint-plugin-taplo"
 version = "0.1.1"
 authors = ["Tice Cosmos <tice@139.com>"]
 edition = "2018"
+license = "MIT"
 
 
 [lib]
 crate-type = ["lib", "cdylib"]
+
+
+[profile.release]
+opt-level = 3
+debug = false
+lto = true
+debug-assertions = false
+overflow-checks = false
+panic = "abort"
 
 
 [features]
@@ -15,8 +25,12 @@ wasm = ["serde_json", "dprint-core/wasm"]
 
 [dependencies]
 dprint-core = { version = "0.35", features = ["formatting"] }
-taplo = { version = "0.5", features = ["schema", "serde", "verify"] }
 
 serde = { version = "*", features = ["derive"] }
 
 serde_json = { version = "*", optional = true }
+
+[dependencies.taplo]
+git = "https://github.com/TiceCosmos/taplo.git"
+branch = "remove_wasm_bindgen_format"
+features = ["schema", "serde", "verify"]
