@@ -21,6 +21,7 @@ panic = "abort"
 
 [features]
 wasm = ["serde_json", "dprint-core/wasm"]
+process = ["dprint-core/process"]
 
 
 [dependencies]
@@ -34,3 +35,7 @@ serde_json = { version = "*", optional = true }
 git = "https://github.com/TiceCosmos/taplo.git"
 branch = "remove_wasm_bindgen_format"
 features = ["schema", "serde", "verify"]
+
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+structopt = "0.3"

@@ -1,27 +1,27 @@
-use super::configuration::{resolve_config, Configuration};
-use dprint_core::generate_plugin_code;
+use super::{resolve_config, Configuration};
 use std::path::Path;
 
 fn get_plugin_config_key() -> String {
-    String::from("taplo")
+    crate::CONFIG_KEY.into()
 }
 
 fn get_plugin_file_extensions() -> Vec<String> {
-    vec![String::from("toml")]
+    crate::FILE_EXTENSIONS
+        .iter()
+        .map(|x| x.to_string())
+        .collect()
 }
 
 fn get_plugin_help_url() -> String {
-    String::from("https://taplo.tamasfe.dev/configuration/#formatting-options")
+    crate::HELP_URL.into()
 }
 
 fn get_plugin_config_schema_url() -> String {
-    String::new()
+    crate::CONFIG_SCHEMA_URL.into()
 }
 
 fn get_plugin_license_text() -> String {
-    std::str::from_utf8(include_bytes!("../LICENSE"))
-        .unwrap()
-        .into()
+    crate::LICENSE_TEXT.into()
 }
 
 fn format_text(
@@ -29,7 +29,8 @@ fn format_text(
     file_text: &str,
     config: &Configuration,
 ) -> Result<String, String> {
-    crate::format_text::format_text(file_text, config)
+    super::format_text(file_text, config).map_err(|x| x.message)
 }
 
-generate_plugin_code!();
+#[cfg(all(target_arch = "wasm32", target_os = "unknown"))]
+dprint_core::generate_plugin_code!();
