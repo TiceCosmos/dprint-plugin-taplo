@@ -86,7 +86,7 @@ jobs:
                  "**/*.{toml}"
                ],
                "plugins": [
-                 https://github.com/TiceCosmos/dprint-plugin-taplo/releases/download/${{ steps.get_tag_version.outputs.TAG_VERSION }}/taplo-${{ steps.get_tag_version.outputs.TAG_VERSION }}.wasm"
+                 "https://github.com/TiceCosmos/dprint-plugin-taplo/releases/download/${{ steps.get_tag_version.outputs.TAG_VERSION }}/taplo-${{ steps.get_tag_version.outputs.TAG_VERSION }}.wasm"
                ]
              }
              ```
