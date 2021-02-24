@@ -39,3 +39,8 @@ features = ["schema", "serde", "verify"]
 
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 structopt = "0.3"
+
+[[bin]]
+name = "dprint-plugin-taplo"
+path = "src/bin/process.rs"
+required-features = ["process"]

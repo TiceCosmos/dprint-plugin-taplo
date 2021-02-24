@@ -1,4 +1,3 @@
-#[cfg(feature = "process")]
 fn main() -> Result<(), dprint_core::types::ErrBox> {
     use structopt::StructOpt;
 
@@ -23,6 +22,3 @@ fn main() -> Result<(), dprint_core::types::ErrBox> {
 
     handle_process_stdio_messages(dprint_plugin_taplo::MyProcessPluginHandler::default())
 }
-
-#[cfg(not(feature = "process"))]
-fn main() {}
