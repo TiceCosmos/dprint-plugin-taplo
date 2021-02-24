@@ -8,7 +8,8 @@
   "plugins": [
     "https://plugins.dprint.dev/json-0.7.3.wasm",
     "https://plugins.dprint.dev/markdown-0.5.1.wasm",
-    "https://plugins.dprint.dev/rustfmt-0.3.0.wasm"
+    "https://plugins.dprint.dev/rustfmt-0.3.0.wasm",
+    "https://github.com/TiceCosmos/dprint-plugin-taplo/releases/download/0.1.3/taplo.exe-plugin@cc327d785b056c39f055a4fa79c8faa3f7b7a0beefccd6f8266118454f0a5f56"
   ],
   "json": {
   },
