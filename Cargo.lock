@@ -51,9 +51,9 @@ checksum = "cf1de2fe8c75bc145a2f577add951f8134889b4795d47466a54a5c846d691693"
 
 [[package]]
 name = "bumpalo"
-version = "3.4.0"
+version = "3.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2e8c087f005730276d1096a652e92a8bacee2e2472bcc9715a74d2bec38b5820"
+checksum = "63396b8a4b9de3f4fdfb320ab6080762242f66a8ef174c49d8e19b674db4cdbe"
 
 [[package]]
 name = "cc"
@@ -143,9 +143,9 @@ checksum = "fea41bba32d969b513997752735605054bc0dfa92b4c56bf1189f2e174be7a10"
 
 [[package]]
 name = "dprint-core"
-version = "0.35.1"
+version = "0.38.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "db5b96c278cf35e2dd2c225c16abcdbf46b2e39d3058426ac67b105f023ac148"
+checksum = "a9eef318dc38909f86fa9723ae9b2fd564554bd8115acbf6f67b89bb9d4101da"
 dependencies = [
  "bumpalo",
  "fnv",
@@ -630,11 +630,10 @@ dependencies = [
 
 [[package]]
 name = "sysinfo"
-version = "0.15.9"
+version = "0.16.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "de94457a09609f33fec5e7fceaf907488967c6c7c75d64da6a7ce6ffdb8b5abd"
+checksum = "567e910ef0207be81a4e1bb0491e9a8d9866cf45b20fe1a52c03d347da9ea51b"
 dependencies = [
- "cc",
  "cfg-if",
  "core-foundation-sys",
  "doc-comment",
@@ -647,8 +646,9 @@ dependencies = [
 
 [[package]]
 name = "taplo"
-version = "0.5.1"
-source = "git+https://github.com/TiceCosmos/taplo.git?branch=remove_wasm_bindgen_format#74537534ad301155bb7b8804f62a06c586a03d59"
+version = "0.5.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "47598177062f3c4cbf44db392bf48a0b5b53eee09f7111fce1781a4105b1bd7b"
 dependencies = [
  "glob",
  "indexmap",

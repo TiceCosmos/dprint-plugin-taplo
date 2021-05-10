@@ -25,16 +25,12 @@ process = ["dprint-core/process"]
 
 
 [dependencies]
-dprint-core = { version = "0.35", features = ["formatting"] }
+dprint-core = { version = "0.38", features = ["formatting"] }
+taplo = { version = "0.5", features = ["schema", "serde", "verify"] }
 
 serde = { version = "*", features = ["derive"] }
 
 serde_json = { version = "*", optional = true }
-
-[dependencies.taplo]
-git = "https://github.com/TiceCosmos/taplo.git"
-branch = "remove_wasm_bindgen_format"
-features = ["schema", "serde", "verify"]
 
 
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]

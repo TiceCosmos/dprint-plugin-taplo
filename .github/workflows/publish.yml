@@ -11,6 +11,9 @@ jobs:
       id: get_tag_version
       run: echo ::set-output name=TAG_VERSION::${GITHUB_REF/refs\/tags\//}
 
+    - name: Download plugin file
+      run: curl -L https://github.com/TiceCosmos/dprint-plugin-taplo/releases/download/${{ steps.get_tag_version.outputs.TAG_VERSION }}/taplo.exe-plugin --output taplo.exe-plugin
+
       # PLUGIN PUBLISH
     - name: Checkout plugins repo
       uses: actions/checkout@v2
@@ -21,30 +24,9 @@ jobs:
     - name: Plugin publish
       run: |
           cd dprint-plugins
-          curl -L https://github.com/TiceCosmos/dprint-plugin-taplo/releases/download/${{ steps.get_tag_version.outputs.TAG_VERSION }}/taplo-${{ steps.get_tag_version.outputs.TAG_VERSION }}.wasm \
-            --output taplo-${{ steps.get_tag_version.outputs.TAG_VERSION }}.wasm
-          node scripts/replace-plugin.js dprint-plugin-taplo ${{ steps.get_tag_version.outputs.TAG_VERSION }} taplo-${{ steps.get_tag_version.outputs.TAG_VERSION }}
+          mv ../taplo.exe-plugin taplo-${{ steps.get_tag_version.outputs.TAG_VERSION }}.exe-plugin
           git add .
           git config user.name "David Sherret"
           git config user.email "dsherret@users.noreply.github.com"
           git commit -m "dprint-plugin-taplo ${{ steps.get_tag_version.outputs.TAG_VERSION }}"
           git push origin master
-
-      # CARGO PUBLISH
-    - name: Checkout
-      uses: actions/checkout@v2
-
-    - name: Cache cargo
-      uses: actions/cache@v2
-      with:
-        path: |
-          ~/.cargo/registry
-          ~/.cargo/git
-          target
-        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-
-    - name: Cargo login
-      run: cargo login ${{ secrets.CRATES_TOKEN }}
-
-    - name: Cargo publish
-      run: cargo publish

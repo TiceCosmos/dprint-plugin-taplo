@@ -1,20 +1,15 @@
 {
   "$schema": "https://dprint.dev/schemas/v0.json",
   "projectType": "openSource",
-  "includes": ["**/*.{json,md,rs,toml}"],
+  "includes": ["**/*.{json,md,rs,js,toml}"],
   "excludes": [
     "target"
   ],
   "plugins": [
-    "https://plugins.dprint.dev/json-0.7.3.wasm",
-    "https://plugins.dprint.dev/markdown-0.5.1.wasm",
+    "https://plugins.dprint.dev/json-0.10.2.wasm",
+    "https://plugins.dprint.dev/markdown-0.7.1.wasm",
     "https://plugins.dprint.dev/rustfmt-0.3.0.wasm",
+    "https://plugins.dprint.dev/typescript-0.45.0.wasm",
     "https://github.com/TiceCosmos/dprint-plugin-taplo/releases/download/0.1.3/taplo.exe-plugin@0d101ca94bee8534e546040aae12f974a6f49008993f8a65a88952e1c69c5166"
-  ],
-  "json": {
-  },
-  "markdown": {
-  },
-  "rustfmt": {
-  }
+  ]
 }
