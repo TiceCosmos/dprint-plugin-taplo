@@ -1,4 +1,7 @@
 {
   "editor.defaultFormatter": "dprint.dprint",
-  "rust-analyzer.cargo.allFeatures": true
+  "rust-analyzer.cargo.allFeatures": true,
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  }
 }
