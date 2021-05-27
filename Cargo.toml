@@ -1,6 +1,6 @@
 [package]
 name = "dprint-plugin-taplo"
-version = "0.1.5"
+version = "0.1.6"
 authors = ["Tice Cosmos <tice@139.com>"]
 edition = "2018"
 license = "MIT"
@@ -25,7 +25,7 @@ process = ["dprint-core/process"]
 
 
 [dependencies]
-dprint-core = { version = "0.38", features = ["formatting"] }
+dprint-core = { version = "0.42", features = ["formatting"] }
 taplo = { version = "0.5", features = ["schema", "serde", "verify"] }
 
 serde = { version = "*", features = ["derive"] }
@@ -39,5 +39,5 @@ structopt = "0.3"
 
 [[bin]]
 name = "dprint-plugin-taplo"
-path = "src/bin/process.rs"
+path = "src/process.rs"
 required-features = ["process"]
