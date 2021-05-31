@@ -1,7 +1,7 @@
-const fs = require("fs");
-const crypto = require("crypto");
+import { createHash } from "crypto";
+import { readFileSync, writeFileSync } from "fs";
 
-const packageText = fs.readFileSync("Cargo.toml", { encoding: "utf8" });
+const packageText = readFileSync("Cargo.toml", { encoding: "utf8" });
 const version = packageText.match(/version\s*=\s*\"(\d+\.\d+\.\d+)\"/)[1];
 
 if (!/^\d+\.\d+\.\d+$/.test(version)) {
@@ -16,11 +16,11 @@ const outputFile = {
     "linux-x86_64": getPlatformObject("dprint-plugin-taplo-x86_64-unknown-linux-gnu.zip"),
     "windows-x86_64": getPlatformObject("dprint-plugin-taplo-x86_64-pc-windows-msvc.zip"),
 };
-fs.writeFileSync("taplo.exe-plugin", JSON.stringify(outputFile, undefined, 2), { encoding: "utf8" });
+writeFileSync("taplo.exe-plugin", JSON.stringify(outputFile, undefined, 2), { encoding: "utf8" });
 
 function getPlatformObject(zipFileName) {
-    const fileBytes = fs.readFileSync(zipFileName);
-    const hash = crypto.createHash("sha256");
+    const fileBytes = readFileSync(zipFileName);
+    const hash = createHash("sha256");
     hash.update(fileBytes);
     const checksum = hash.digest("hex");
     console.log(zipFileName + ": " + checksum);

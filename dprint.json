@@ -1,13 +1,13 @@
 {
   "$schema": "https://dprint.dev/schemas/v0.json",
   "projectType": "openSource",
-  "lineWidth": 100,
+  "lineWidth": 120,
   "includes": [
-    "**/*.js",
     "**/*.json",
     "**/*.md",
     "**/*.rs",
-    "**/*.toml"
+    "**/*.toml",
+    "**/*.{js,mjs}"
   ],
   "excludes": [
     "target"

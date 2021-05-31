@@ -107,7 +107,7 @@ jobs:
           echo "Windows zip: ${{needs.build.outputs.WINDOWS_ZIP_CHECKSUM}}"
 
       - name: Create plugin file
-        run: node scripts/createPluginFile.js
+        run: node scripts/createPluginFile.mjs
 
       - name: Get tag version
         id: get_tag_version

@@ -22,9 +22,7 @@ impl PluginHandler<Configuration> for TaploPluginHandler {
     }
 
     fn get_license_text(&mut self) -> String {
-        std::str::from_utf8(include_bytes!("../LICENSE"))
-            .unwrap()
-            .into()
+        std::str::from_utf8(include_bytes!("../LICENSE")).unwrap().into()
     }
 
     fn resolve_config(
