@@ -16,6 +16,7 @@ impl PluginHandler<Configuration> for TaploPluginHandler {
             version: env!("CARGO_PKG_VERSION").to_string(),
             config_key: "taplo".to_string(),
             file_extensions: vec!["toml".to_string()],
+            file_names: vec![],
             help_url: "https://taplo.tamasfe.dev/configuration/#formatting-options".to_string(),
             config_schema_url: "".to_string(),
         }
