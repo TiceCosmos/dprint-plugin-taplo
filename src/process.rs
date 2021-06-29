@@ -1,4 +1,6 @@
-use dprint_core::plugins::process::{handle_process_stdio_messages, start_parent_process_checker_thread};
+use dprint_core::plugins::process::{
+    handle_process_stdio_messages, start_parent_process_checker_thread,
+};
 use structopt::StructOpt;
 
 #[derive(Debug, StructOpt)]

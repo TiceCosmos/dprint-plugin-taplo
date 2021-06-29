@@ -74,5 +74,8 @@ pub fn resolve_config(
 
     diagnostics.extend(get_unknown_property_diagnostics(key_map));
 
-    ResolveConfigurationResult { diagnostics, config }
+    ResolveConfigurationResult {
+        diagnostics,
+        config,
+    }
 }
